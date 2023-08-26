@@ -1,10 +1,10 @@
-import './App.css'
+import GameList from "./components/GameList/GameList"
 
-function App() {
+const App = () => {
 
   return (
     <>
-
+      <GameList />
     </>
   )
 }
