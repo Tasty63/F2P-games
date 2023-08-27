@@ -30,8 +30,6 @@ const GameCard = ({ gameInfo }: GameCardProps) => {
     >
       <div className="body">
         <div className={styles.title}>{title}</div>
-
-        {/* русский формат */}
         <div className="release-date">Дата Релиза: {formatToLocaleDate(release_date)}</div>
         <div className="publisher">Издатель: {publisher}</div>
         <div className="genre">Жанр: {genre}</div>
