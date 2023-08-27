@@ -1,6 +1,7 @@
 import { Card } from "antd"
 import { GameCardProps } from "../../config/types"
 import styles from './gameCard.module.css'
+import { formatToLocaleDate } from "../../config/utils"
 
 const GameCard = ({ gameInfo }: GameCardProps) => {
 
@@ -31,10 +32,10 @@ const GameCard = ({ gameInfo }: GameCardProps) => {
         <div className={styles.title}>{title}</div>
 
         {/* русский формат */}
-        <div className="release-date">Дата Релиза: {release_date}</div>
+        <div className="release-date">Дата Релиза: {formatToLocaleDate(release_date)}</div>
         <div className="publisher">Издатель: {publisher}</div>
         <div className="genre">Жанр: {genre}</div>
-        <div className="platform">Платформы: {platform}</div>
+        <div className="platform">Платформа: {platform}</div>
       </div>
     </Card>
   )
