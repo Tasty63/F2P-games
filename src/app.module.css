@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
+  flex: 0 0 15%;
+}
+
+.gameList {
+  flex: 0 0 1;
+}
