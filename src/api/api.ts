@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import { GameInfoType } from "../config/types"
+import { GameDetailsType, GameInfoType } from "../config/types"
 import { BASE_URL } from "../config/constants"
 
 export const gamesApi = createApi({
@@ -15,10 +15,13 @@ export const gamesApi = createApi({
     }
   }),
 
-
   endpoints: (builder) => ({
     getGames: builder.query<GameInfoType[], void>({
       query: () => 'games',
+    }),
+
+    getGameDetailsById: builder.query<GameDetailsType, string>({
+      query: (gameId) => `game?id=${gameId}`,
     }),
 
     getGamesByPlatform: builder.query<GameInfoType[], string>({
@@ -27,5 +30,9 @@ export const gamesApi = createApi({
   })
 })
 
-export const { useGetGamesQuery, useGetGamesByPlatformQuery } = gamesApi
+export const {
+  useGetGamesQuery,
+  useGetGamesByPlatformQuery,
+  useGetGameDetailsByIdQuery
+} = gamesApi
 

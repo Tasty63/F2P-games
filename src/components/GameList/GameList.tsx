@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useGetGamesByPlatformQuery, useGetGamesQuery } from '../../api/api'
 import { numberOfMockCards } from '../../config/constants';
 import GameCard from '../GameCard/GameCard';
@@ -26,7 +27,9 @@ const GameList = () => {
               ? mockCards
               : data && data.map((gameInfo) => (
                 <div className={styles.card} key={gameInfo.id}>
-                  <GameCard gameInfo={gameInfo} />
+                  <Link to={`/game/${gameInfo.id}`}>
+                    <GameCard gameInfo={gameInfo} />
+                  </Link>
                 </div>
               ))}
           </Row>

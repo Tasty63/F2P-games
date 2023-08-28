@@ -1,0 +1,62 @@
+.header {
+  border-bottom: 1px solid black;
+  margin-bottom: 15px;
+  
+  display: flex;
+  align-items: center;
+
+  .backButton {
+    background: none;
+    border: none;
+    outline: none;
+  }
+
+  .arrow {
+    width: 75px;
+    height: 50px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.main {
+  display: flex;
+  
+  max-width: 1400px;
+  margin: 0 auto;
+
+  .imageContainer {
+    margin-right: 20px;
+
+    .image {
+      
+    }
+  }
+
+  .body {
+
+  }
+}
+
+.carouselContainer {
+  width: 1000px;
+
+  .carousel {
+    
+    &:hover {
+      cursor: pointer;
+    }
+
+    .screenshot {
+    }
+  }
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

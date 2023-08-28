@@ -1,4 +1,4 @@
-import { Card } from "antd"
+import { Card, Skeleton } from "antd"
 import styles from './GameCard.module.css'
 import gamepadImage from '../../assets/gamepad.jpg'
 
@@ -13,7 +13,7 @@ const MockGameCard = () => {
         />
       }
     >
-      <div className="body">
+      <div>
         <div className={styles.title}>Название</div>
         <div className={styles.cardText}>Дата Релиза: </div>
         <div className={styles.cardText}>Издатель: </div>
