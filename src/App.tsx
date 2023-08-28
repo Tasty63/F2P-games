@@ -1,19 +1,12 @@
-import { Row, Col } from "antd"
-import GameFilter from "./components/GameFilter/GameFilter"
-import GameList from "./components/GameList/GameList"
-import styles from './app.module.css'
+import { Routes, Route } from 'react-router-dom'
+import GameListPage from './pages/GameListPage/GameListPage'
 
 const App = () => {
   return (
     <>
-      <div className={styles.container}>
-        <div className={styles.menu}>
-          <GameFilter />
-        </div>
-        <div className={styles.gameList}>
-          <GameList />
-        </div>
-      </div>
+      <Routes>
+        <Route path='/' element={<GameListPage />} />
+      </Routes>
     </>
   )
 }
