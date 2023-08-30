@@ -44,6 +44,8 @@ export type GameDetailsType = {
   screenshots: Screenshot[];
 };
 
+export type SavedGameDetailsType = GameDetailsType & { timestamp: number } | null
+
 export type PlatformType = 'pc' | 'browser' | 'all';
 export type CategoryType = 'mmorpg' | 'shooter' | 'strategy' | 'moba' | 'racing' | 'sandbox';
 export type SortByType = 'relevance' | 'alphabetical' | 'popularity' | 'release-date';

@@ -1,6 +1,7 @@
 import { gamesApi } from './../api/api';
 import { configureStore } from "@reduxjs/toolkit";
 import { gamesFilterSlice } from './features/gamesFilter';
+import { localStorageMiddleware } from './middleware';
 
 export const store = configureStore({
   reducer: {
@@ -8,7 +9,7 @@ export const store = configureStore({
     [gamesApi.reducerPath]: gamesApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(gamesApi.middleware),
+    getDefaultMiddleware().concat(gamesApi.middleware, localStorageMiddleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>

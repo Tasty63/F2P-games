@@ -13,7 +13,7 @@ import ErrorMesage from '../ErrorMesage/ErrorMesage';
 const GameList = () => {
   const filterParameters = useSelector((state: RootState) => state.gamesFilterSlice)
 
-  const { data, isLoading, isError } = useGetGamesQuery(filterParameters);
+  const { data, isFetching, isError } = useGetGamesQuery(filterParameters);
 
   const mockCards = Array.from({ length: numberOfMockCards }).map((card, index) => (
     <div className={styles.card} key={index}>
@@ -30,7 +30,7 @@ const GameList = () => {
       <div className={styles.cardList}>
         {
           <Row>
-            {isLoading
+            {isFetching
               ? mockCards
               : data && data.map((gameInfo) => (
                 <div className={styles.card} key={gameInfo.id}>

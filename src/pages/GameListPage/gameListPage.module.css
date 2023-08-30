@@ -1,15 +1,22 @@
 .container {
-  max-width: 1600px;
   margin: 0 auto;
 
   display: flex;
   justify-content: center;
+
+  .menu {
+    position: sticky;
+    height: 300px;
+  
+    flex: 0 0 15%;
+  }
+
+  .gameList {
+    flex: 1;
+    max-width: 1400px;
+    width: 100%;
+  }
 }
 
-.menu {
-  flex: 0 0 15%;
-}
 
-.gameList {
-  flex: 0 0 1;
-}
+
