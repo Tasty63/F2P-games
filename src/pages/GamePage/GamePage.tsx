@@ -5,6 +5,7 @@ import { formatToLocaleDate } from "../../config/utils"
 
 import ArrowIcon from '../../assets/arrow.svg'
 import styles from './gamePage.module.css'
+import ErrorMesage from "../../components/ErrorMesage/ErrorMesage"
 
 const GamePage = () => {
   const { gameId } = useParams();
@@ -17,6 +18,8 @@ const GamePage = () => {
   }
 
   const { data, isLoading, isError } = useGetGameDetailsByIdQuery(gameId);
+
+  if (isError) return <ErrorMesage />
 
   return (
     <>
@@ -44,7 +47,7 @@ const GamePage = () => {
                 <div>Жанр: {data.genre}</div>
                 <div>Платформа: {data.platform}</div>
                 <div>Разработчик: {data.developer}</div>
-                <div>Дата выхода: {formatToLocaleDate(data.release_date)}</div>
+                <div>Дата выпуска: {formatToLocaleDate(data.release_date)}</div>
               </div>
               <div className={styles.carouselContainer}>
                 <Carousel className={styles.carousel} autoplay draggable={true}>
@@ -75,7 +78,6 @@ const GamePage = () => {
           </main>
         </>
       }
-
     </>
   )
 }

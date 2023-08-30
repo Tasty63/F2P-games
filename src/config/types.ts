@@ -1,3 +1,4 @@
+
 export type GameInfoType = {
   id: number;
   title: string;
@@ -11,10 +12,6 @@ export type GameInfoType = {
   release_date: string;
   freetogame_profile_url: string;
 };
-
-export interface GameCardProps {
-  gameInfo: GameInfoType,
-}
 
 export type SystemRequirements = {
   os: string;
@@ -46,3 +43,24 @@ export type GameDetailsType = {
   minimum_system_requirements: SystemRequirements;
   screenshots: Screenshot[];
 };
+
+export type PlatformType = 'pc' | 'browser' | 'all';
+export type CategoryType = 'mmorpg' | 'shooter' | 'strategy' | 'moba' | 'racing' | 'sandbox';
+export type SortByType = 'relevance' | 'alphabetical' | 'popularity' | 'release-date';
+export type FilterType = PlatformType | CategoryType | SortByType;
+export type GamesFilterField = 'platform' | 'category' | 'sortBy';
+
+export type GamesFilterParameters = {
+  platform: string | null,
+  category: string | null,
+  sortBy: string | null
+}
+
+export type GamesFilterPayload = {
+  name: string,
+  value: string,
+}
+
+export interface GameCardProps {
+  gameInfo: GameInfoType,
+}

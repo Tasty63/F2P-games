@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import { GameDetailsType, GameInfoType } from "../config/types"
+import { GameDetailsType, GameInfoType, GamesFilterParameters } from "../config/types"
 import { BASE_URL } from "../config/constants"
+import { hasOnlyNullProperties } from "../config/utils";
 
 export const gamesApi = createApi({
   reducerPath: 'gamesApi',
@@ -16,23 +17,39 @@ export const gamesApi = createApi({
   }),
 
   endpoints: (builder) => ({
-    getGames: builder.query<GameInfoType[], void>({
-      query: () => 'games',
+    getGames: builder.query<GameInfoType[], GamesFilterParameters>({
+      query: (args) => {
+
+        if (hasOnlyNullProperties(args)) {
+          return 'games';
+        }
+
+        const { platform, category, sortBy } = args;
+
+        let queryString = 'games?';
+
+        if (platform) {
+          queryString += `platform=${platform}&`;
+        }
+        if (category) {
+          queryString += `category=${category}&`;
+        }
+        if (sortBy) {
+          queryString += `sort-by=${sortBy}`;
+        }
+
+        return queryString;
+      }
     }),
 
     getGameDetailsById: builder.query<GameDetailsType, string>({
       query: (gameId) => `game?id=${gameId}`,
-    }),
-
-    getGamesByPlatform: builder.query<GameInfoType[], string>({
-      query: (platform) => `games?platform=${platform}`,
     }),
   })
 })
 
 export const {
   useGetGamesQuery,
-  useGetGamesByPlatformQuery,
-  useGetGameDetailsByIdQuery
+  useGetGameDetailsByIdQuery,
 } = gamesApi
 

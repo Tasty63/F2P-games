@@ -1,14 +1,19 @@
 import { Link } from 'react-router-dom';
-import { useGetGamesByPlatformQuery, useGetGamesQuery } from '../../api/api'
+import { useGetGamesQuery } from '../../api/api'
 import { numberOfMockCards } from '../../config/constants';
 import GameCard from '../GameCard/GameCard';
 import MockGameCard from '../GameCard/MockGameCard';
-import styles from './gameList.module.css'
 import { Row, Spin } from 'antd';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+
+import styles from './gameList.module.css'
+import ErrorMesage from '../ErrorMesage/ErrorMesage';
 
 const GameList = () => {
+  const filterParameters = useSelector((state: RootState) => state.gamesFilterSlice)
 
-  const { data, isLoading } = useGetGamesQuery();
+  const { data, isLoading, isError } = useGetGamesQuery(filterParameters);
 
   const mockCards = Array.from({ length: numberOfMockCards }).map((card, index) => (
     <div className={styles.card} key={index}>
@@ -17,6 +22,8 @@ const GameList = () => {
       </Spin>
     </div>
   ))
+
+  if (isError) return <ErrorMesage />
 
   return (
     <>
