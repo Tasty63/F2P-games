@@ -2,7 +2,7 @@ export const formatToLocaleDate = (date: string): string => {
   return new Date(date).toLocaleDateString();
 }
 
-export const hasOnlyNullProperties = (object: {}): boolean => {
+export const hasOnlyNullProperties = (object: object): boolean => {
   return Object.values(object).every(value => value === null);
 }
 
