@@ -1,6 +1,13 @@
-.group {
-  padding-left: 50px;
 
-  display: flex;
-  flex-direction: column;
+.gameSort, .platformFilter  {
+  margin-bottom: 10px;
 }
+
+.platformFilter {
+
+}
+
+.sortSelect {
+  width: 150px;
+}
+

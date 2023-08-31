@@ -56,8 +56,8 @@ const GamePage = () => {
             />
           </div>
           <div className={styles.body}>
-            <div className={styles.title}>{gameDetails.title}</div>
             <div className={styles.info}>
+              <div className={styles.title}>{gameDetails.title}</div>
               <div>Жанр: {gameDetails.genre}</div>
               <div>Платформа: {gameDetails.platform}</div>
               <div>Разработчик: {gameDetails.developer}</div>
@@ -78,7 +78,7 @@ const GamePage = () => {
             </div>
             {gameDetails.minimum_system_requirements &&
               <div className={styles.systemRequirements}>
-                <div className={styles.requirementsTitle}>Минимальные системые требования</div>
+                <div className={styles.requirementsTitle}>Минимальные системые требования:</div>
                 <div className={styles.requirementsBody}>
                   <div>ОС: {gameDetails.minimum_system_requirements.os}</div>
                   <div>Процессор: {gameDetails.minimum_system_requirements.processor}</div>

@@ -10,14 +10,10 @@ const GameCard = ({ gameInfo }: GameCardProps) => {
   const {
     title,
     thumbnail,
-    short_description,
-    game_url,
     genre,
     platform,
     publisher,
-    developer,
     release_date,
-    freetogame_profile_url,
   } = gameInfo;
 
   return (
@@ -29,6 +25,7 @@ const GameCard = ({ gameInfo }: GameCardProps) => {
           src={thumbnail}
           preview={false}
           fallback={GamepadImage}
+          placeholder={true}
         />
       }
     >

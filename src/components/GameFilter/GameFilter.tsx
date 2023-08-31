@@ -26,10 +26,11 @@ const GameFilter = () => {
   };
 
   return (
-    <div className="gameFilter">
-      <div className="gameSort">
+    <div className={styles.gameFilter}>
+      <div className={styles.gameSort}>
         <h3>Cортировка:</h3>
         <Select
+          className={styles.sortSelect}
           defaultValue="relevance"
           onChange={onSortChange}
           options={[
@@ -40,7 +41,7 @@ const GameFilter = () => {
           ]}
         />
       </div>
-      <div className="platformFilter">
+      <div className={styles.platformFilter}>
         <h3>Платформа:</h3>
         <Radio.Group onChange={onFilterChange} name="platform">
           <Col>
@@ -49,7 +50,7 @@ const GameFilter = () => {
           </Col>
         </Radio.Group>
       </div>
-      <div className="categoryFilter">
+      <div className={styles.categoryFilter}>
         <h3>Жанр:</h3>
         <Radio.Group onChange={onFilterChange} name="category">
           <Col>

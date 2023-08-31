@@ -1,20 +1,40 @@
 .container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1400px;
   margin: 0 auto;
 
-  display: flex;
-  justify-content: center;
+  @media screen and (max-width: 1320px){
+    max-width: 1000px;
+  }
+
+  @media screen and (max-width: 920px){
+    max-width: 600px;
+  }
+
+  @media screen and (max-width: 600px){
+    flex-direction: column;
+  }
 
   .menu {
     position: sticky;
-    height: 300px;
-  
+    box-sizing: border-box;
+    top: 0;
+
+    height: 350px;
+    padding: 16px 32px;
     flex: 0 0 15%;
+
+    @media screen and (max-width: 600px){
+      position: static;
+    }
   }
 
   .gameList {
-    flex: 1;
-    max-width: 1400px;
-    width: 100%;
+    @media screen and (max-width: 600px){
+      margin: 0 auto;
+      max-width: 400px;
+    }
   }
 }
 

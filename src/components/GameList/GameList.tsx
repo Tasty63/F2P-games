@@ -26,23 +26,15 @@ const GameList = () => {
   if (isError) return <ErrorMesage />
 
   return (
-    <>
-      <div className={styles.cardList}>
-        {
-          <Row>
-            {isFetching
-              ? mockCards
-              : data && data.map((gameInfo) => (
-                <div className={styles.card} key={gameInfo.id}>
-                  <Link to={`/game/${gameInfo.id}`}>
-                    <GameCard gameInfo={gameInfo} />
-                  </Link>
-                </div>
-              ))}
-          </Row>
-        }
-      </div>
-    </>
+    <Row>
+      {isFetching
+        ? mockCards
+        : data && data.map((gameInfo) => (
+          <Link to={`/game/${gameInfo.id}`} key={gameInfo.id} className={styles.card}>
+            <GameCard gameInfo={gameInfo} />
+          </Link>
+        ))}
+    </Row>
   )
 }
 
