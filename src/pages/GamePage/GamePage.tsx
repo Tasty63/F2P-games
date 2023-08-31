@@ -5,8 +5,8 @@ import { formatToLocaleDate, getFromLocalStorage, hasTimePassed, removeFromLocal
 import { SavedGameDetailsType } from "../../config/types"
 import ArrowIcon from '../../assets/arrow.svg'
 import ErrorMesage from "../../components/ErrorMesage/ErrorMesage"
-import styles from './gamePage.module.css'
 import { saveTimeMilliseconds } from "../../config/constants"
+import styles from './gamePage.module.css'
 
 const GamePage = () => {
   const { gameId } = useParams();

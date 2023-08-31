@@ -1,29 +1,31 @@
-import { Checkbox, Col, Row, Radio, Select } from 'antd';
+import { Col, Row, Radio, Select } from 'antd';
 import type { RadioChangeEvent } from 'antd';
-import type { CheckboxValueType } from 'antd/es/checkbox/Group';
-import { useDispatch } from 'react-redux';
-import { changeFilterValue } from '../../store/features/gamesFilter';
+import {
+  changePlatformValue,
+  changeCategoryValue,
+  changeSortByValue
+} from '../../store/features/gamesFilter';
 import { SortByType } from '../../config/types';
 
 import styles from './GameFilter.module.css'
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 
 
 const GameFilter = () => {
-  const dispatch = useDispatch();
+  const { category, platform, sortBy } = useAppSelector((state) => state.gamesFilterSlice)
+  const dispatch = useAppDispatch();
 
-  const onFilterChange = (event: RadioChangeEvent) => {
-    const { name, value } = event.target;
+  const changeSortByFilter = (value: SortByType) => {
+    dispatch(changeSortByValue(value));
+  }
 
-    if (!name) {
-      return;
-    }
+  const changePlatformFilter = (event: RadioChangeEvent) => {
+    dispatch(changePlatformValue(event.target.value))
+  }
 
-    dispatch(changeFilterValue({ name, value }));
-  };
-
-  const onSortChange = (value: SortByType) => {
-    dispatch(changeFilterValue({ name: 'sortBy', value }))
-  };
+  const changeCategoryFilter = (event: RadioChangeEvent) => {
+    dispatch(changeCategoryValue(event.target.value))
+  }
 
   return (
     <div className={styles.gameFilter}>
@@ -32,7 +34,8 @@ const GameFilter = () => {
         <Select
           className={styles.sortSelect}
           defaultValue="relevance"
-          onChange={onSortChange}
+          onChange={changeSortByFilter}
+          value={sortBy}
           options={[
             { value: 'relevance', label: 'По умолчанию' },
             { value: 'alphabetical ', label: 'По алфавиту' },
@@ -43,7 +46,12 @@ const GameFilter = () => {
       </div>
       <div className={styles.platformFilter}>
         <h3>Платформа:</h3>
-        <Radio.Group onChange={onFilterChange} name="platform" defaultValue={"all"}>
+        <Radio.Group
+          onChange={changePlatformFilter}
+          name="platform"
+          defaultValue={"all"}
+          value={platform}
+        >
           <Col>
             <Row><Radio value="all">Все</Radio></Row>
             <Row><Radio value="pc">PC</Radio></Row>
@@ -53,7 +61,12 @@ const GameFilter = () => {
       </div>
       <div className={styles.categoryFilter}>
         <h3>Жанр:</h3>
-        <Radio.Group onChange={onFilterChange} name="category" defaultValue={null}>
+        <Radio.Group
+          onChange={changeCategoryFilter}
+          name="category"
+          defaultValue={null}
+          value={category || null}
+        >
           <Col>
             <Row><Radio value={null}>Любой</Radio></Row>
             <Row><Radio value="mmorpg">MMORPG</Radio></Row>

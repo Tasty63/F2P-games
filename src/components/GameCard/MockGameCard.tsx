@@ -1,4 +1,4 @@
-import { Card, Skeleton } from "antd"
+import { Card } from "antd"
 import styles from './GameCard.module.css'
 import gamepadImage from '../../assets/gamepad.jpg'
 

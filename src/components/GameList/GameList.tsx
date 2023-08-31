@@ -1,17 +1,15 @@
 import { Link } from 'react-router-dom';
 import { useGetGamesQuery } from '../../api/api'
 import { numberOfMockCards } from '../../config/constants';
+import { useAppSelector } from '../../store/hooks';
 import GameCard from '../GameCard/GameCard';
 import MockGameCard from '../GameCard/MockGameCard';
 import { Row, Spin } from 'antd';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
-
 import styles from './gameList.module.css'
 import ErrorMesage from '../ErrorMesage/ErrorMesage';
 
 const GameList = () => {
-  const filterParameters = useSelector((state: RootState) => state.gamesFilterSlice)
+  const filterParameters = useAppSelector((state) => state.gamesFilterSlice)
 
   const { data, isFetching, isError } = useGetGamesQuery(filterParameters);
 

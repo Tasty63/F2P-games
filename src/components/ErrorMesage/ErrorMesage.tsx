@@ -1,7 +1,8 @@
+import styles from './errorMessage.module.css'
 
 const ErrorMesage = () => {
   return (
-    <div>Ошибка загрузки данных</div>
+    <div className={styles.error}>Ошибка загрузки данных</div>
   )
 }
 

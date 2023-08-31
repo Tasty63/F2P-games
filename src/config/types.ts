@@ -49,18 +49,14 @@ export type SavedGameDetailsType = GameDetailsType & { timestamp: number } | nul
 export type PlatformType = 'pc' | 'browser' | 'all';
 export type CategoryType = 'mmorpg' | 'shooter' | 'strategy' | 'moba' | 'racing' | 'sandbox';
 export type SortByType = 'relevance' | 'alphabetical' | 'popularity' | 'release-date';
+
 export type FilterType = PlatformType | CategoryType | SortByType;
 export type GamesFilterField = 'platform' | 'category' | 'sortBy';
 
 export type GamesFilterParameters = {
-  platform: string | null,
-  category: string | null,
-  sortBy: string | null
-}
-
-export type GamesFilterPayload = {
-  name: string,
-  value: string,
+  platform: PlatformType,
+  category: CategoryType | null,
+  sortBy: SortByType
 }
 
 export interface GameCardProps {
