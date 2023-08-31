@@ -64,11 +64,11 @@ const GameFilter = () => {
         <Radio.Group
           onChange={changeCategoryFilter}
           name="category"
-          defaultValue={null}
-          value={category || null}
+          defaultValue={undefined}
+          value={category || undefined}
         >
           <Col>
-            <Row><Radio value={null}>Любой</Radio></Row>
+            <Row><Radio value={undefined}>Любой</Radio></Row>
             <Row><Radio value="mmorpg">MMORPG</Radio></Row>
             <Row><Radio value="shooter">Шутер</Radio></Row>
             <Row><Radio value="strategy">Стратегия</Radio></Row>
