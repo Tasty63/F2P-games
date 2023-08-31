@@ -19,11 +19,11 @@ export const getFromLocalStorage = (key: string) => {
   return item && JSON.parse(item);
 }
 
-export const removeFromLocalStorage = (key: string) => {
+export const removeFromLocalStorage = (key: string): void => {
   localStorage.removeItem(key);
 }
 
-export const hasTimePassed = (timestamp: number, time: number) => {
+export const hasTimePassed = (timestamp: number, time: number): boolean => {
   const currentTime = new Date().getTime();
 
   return (currentTime - timestamp) > time;

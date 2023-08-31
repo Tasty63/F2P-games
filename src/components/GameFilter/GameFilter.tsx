@@ -43,8 +43,9 @@ const GameFilter = () => {
       </div>
       <div className={styles.platformFilter}>
         <h3>Платформа:</h3>
-        <Radio.Group onChange={onFilterChange} name="platform">
+        <Radio.Group onChange={onFilterChange} name="platform" defaultValue={"all"}>
           <Col>
+            <Row><Radio value="all">Все</Radio></Row>
             <Row><Radio value="pc">PC</Radio></Row>
             <Row><Radio value="browser">Браузер</Radio></Row>
           </Col>
@@ -52,8 +53,9 @@ const GameFilter = () => {
       </div>
       <div className={styles.categoryFilter}>
         <h3>Жанр:</h3>
-        <Radio.Group onChange={onFilterChange} name="category">
+        <Radio.Group onChange={onFilterChange} name="category" defaultValue={null}>
           <Col>
+            <Row><Radio value={null}>Любой</Radio></Row>
             <Row><Radio value="mmorpg">MMORPG</Radio></Row>
             <Row><Radio value="shooter">Шутер</Radio></Row>
             <Row><Radio value="strategy">Стратегия</Radio></Row>
